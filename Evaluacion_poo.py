@@ -7,8 +7,11 @@ class Alojamiento:
         self.capacidad = capacidad
 
     def mostrar_info(self):
-        # COMPLETAR
-        pass
+    # Juntamos los datos del alojamiento en un solo texto
+        informacion = f"{self.nombre} - {self.tipo} - ${self.precio:.2f} - {self.capacidad} personas"
+
+    # Regresamos la información para poder usarla después
+        return informacion
 
     # Reglas (léelas con atención, no son solo "rellenar")
     # 1. mostrar_info()
@@ -18,8 +21,15 @@ class Alojamiento:
     # El precio debe verse como moneda y la capacidad como número de personas.
 
     def precio_por_persona(self):
-        # COMPLETAR
-        pass
+    # Primero revisamos que el precio y la capacidad sean válidos
+        if self.precio <= 0 or self.capacidad <= 0:
+            return None
+
+    # Dividimos el precio entre el número de personas
+        precio_persona = self.precio / self.capacidad
+
+    # Regresamos el resultado redondeado a dos decimales
+        return round(precio_persona, 2)
 
     # 2. precio_por_persona()
 
@@ -48,6 +58,13 @@ departamento = Alojamiento(
 
 # Completa las instrucciones necesarias para:
 # 1. Mostrar la información de la casa.
+print(casa.mostrar_info())
+
 # 2. Mostrar el precio por persona de la casa.
+print("Precio por persona:", casa.precio_por_persona())
+
 # 3. Mostrar la información del departamento.
+print(departamento.mostrar_info())
+
 # 4. Mostrar el precio por persona del departamento.
+print("Precio por persona:", departamento.precio_por_persona())
